@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EarthSciML Workshop — IIT Bombay, March 2026</title>
+  <style>
+    :root {
+      --deep-blue: #1a3a5c;
+      --accent-blue: #2980b9;
+      --light-blue: #e8f4fd;
+      --orange: #e67e22;
+      --dark: #2c3e50;
+      --medium: #555;
+      --light-bg: #f8f9fa;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--deep-blue) 0%, #234e78 50%, var(--accent-blue) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 1.5rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--orange);
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.5px;
+    }
+    .hero .subtitle {
+      font-size: 1.15rem;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+    .hero-details {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+    .hero-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.05rem;
+    }
+    .hero-detail svg { flex-shrink: 0; }
+    .hero .funding {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-top: 1rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: #cf6d17; }
+
+    /* Container */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Sections */
+    section { padding: 3rem 0; }
+    section + section { border-top: 1px solid #e9ecef; }
+    section h2 {
+      font-size: 1.5rem;
+      color: var(--deep-blue);
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 50px; height: 3px;
+      background: var(--accent-blue);
+      border-radius: 2px;
+    }
+
+    /* About */
+    .about p { color: var(--medium); font-size: 1.02rem; }
+    .about p + p { margin-top: 0.8rem; }
+    .highlight {
+      background: var(--light-blue);
+      border-left: 3px solid var(--accent-blue);
+      padding: 0.8rem 1rem;
+      border-radius: 0 6px 6px 0;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+
+    /* Schedule grid */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 640px) {
+      .schedule-grid { grid-template-columns: 1fr; }
+    }
+    .day-card {
+      border-radius: 10px;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .day-card.day1 { background: var(--light-blue); }
+    .day-card.day2 { background: #fdf2e9; }
+    .day-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.15rem;
+    }
+    .day-card.day1 h3 { color: var(--accent-blue); }
+    .day-card.day2 h3 { color: var(--orange); }
+    .day-card .date {
+      font-size: 0.85rem;
+      color: var(--medium);
+      margin-bottom: 0.8rem;
+    }
+    .day-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .day-card li {
+      padding: 0.35rem 0 0.35rem 1.4rem;
+      position: relative;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+    .day-card li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.65rem;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .day-card.day1 li::before { background: var(--accent-blue); }
+    .day-card.day2 li::before { background: var(--orange); }
+
+    /* Audience */
+    .audience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    .tag {
+      background: var(--light-bg);
+      border: 1px solid #dee2e6;
+      border-radius: 20px;
+      padding: 0.35rem 1rem;
+      font-size: 0.9rem;
+      color: var(--dark);
+    }
+
+    /* Organizers */
+    .organizers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 640px) {
+      .organizers-grid { grid-template-columns: 1fr; }
+    }
+    .org-card {
+      background: var(--light-bg);
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+    .org-card .name {
+      font-weight: 600;
+      font-size: 1.02rem;
+      color: var(--deep-blue);
+    }
+    .org-card .affil {
+      font-size: 0.9rem;
+      color: var(--medium);
+    }
+    .org-card .role {
+      font-size: 0.82rem;
+      color: var(--accent-blue);
+      margin-top: 0.2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--deep-blue);
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+    footer .contact {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>EarthSciML Workshop</h1>
+    <p class="subtitle">Equation-Based Earth System Modeling with Julia</p>
+    <div class="hero-details">
+      <span class="hero-detail">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        IIT Bombay, Mumbai, India
+      </span>
+      <span class="hero-detail">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        March 15 &ndash; 16, 2026
+      </span>
+    </div>
+    <a href="mailto:ctessum@illinois.edu?subject=EarthSciML%20Workshop%20IIT%20Bombay" class="cta-btn">Register Your Interest</a>
+    <p class="funding">Funded by the U.S. National Science Foundation</p>
+  </header>
+
+  <!-- About -->
+  <section class="about">
+    <div class="container">
+      <h2>About the Workshop</h2>
+      <p>
+        Join us at IIT Bombay for a two-day, hands-on workshop on the future of atmospheric and Earth system modeling.
+        Learn to build, compose, and extend scientific models using <strong>EarthSciML</strong> and
+        <strong>ModelingToolkit.jl</strong> &mdash; open-source Julia libraries that let researchers create
+        modular, equation-based model components and seamlessly combine them into complex simulations.
+      </p>
+      <p>
+        Day 1 grounds participants in atmospheric science and data science fundamentals, while Day 2 offers a deep
+        dive into the EarthSciML ecosystem with tutorials, collaborative brainstorming, and a hackathon where you'll
+        build your own model components.
+      </p>
+      <div class="highlight">
+        No prior Julia or EarthSciML experience required &mdash; all exercises use interactive computational notebooks
+        and instructors will guide you every step of the way.
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section>
+    <div class="container">
+      <h2>Schedule</h2>
+      <div class="schedule-grid">
+        <div class="day-card day1">
+          <h3>Day 1 &mdash; Foundations</h3>
+          <p class="date">Sunday, March 15</p>
+          <ul>
+            <li>Fundamentals of atmospheric science and air quality modeling</li>
+            <li>Introduction to data science methods for environmental research</li>
+            <li>Hands-on exercises with interactive computational notebooks</li>
+          </ul>
+        </div>
+        <div class="day-card day2">
+          <h3>Day 2 &mdash; Build &amp; Collaborate</h3>
+          <p class="date">Monday, March 16</p>
+          <ul>
+            <li>Tutorial: ModelingToolkit.jl and EarthSciML in practice</li>
+            <li>Brainstorming: new model components and capabilities</li>
+            <li>Hackathon: build your own models and model components</li>
+            <li>Open science practices with GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience -->
+  <section>
+    <div class="container">
+      <h2>Who Should Attend?</h2>
+      <p style="color: var(--medium);">
+        This workshop is designed for graduate students, postdocs, and researchers interested in atmospheric modeling,
+        environmental engineering, and computational Earth science. Participants at all programming skill levels are
+        welcome. Travel support may be available for selected participants.
+      </p>
+      <div class="audience-tags">
+        <span class="tag">Atmospheric Science</span>
+        <span class="tag">Environmental Engineering</span>
+        <span class="tag">Air Quality</span>
+        <span class="tag">Climate Modeling</span>
+        <span class="tag">Data Science</span>
+        <span class="tag">Computational Science</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizers -->
+  <section>
+    <div class="container">
+      <h2>Organizers</h2>
+      <div class="organizers-grid">
+        <div class="org-card">
+          <div class="name">Christopher Tessum</div>
+          <div class="affil">University of Illinois Urbana-Champaign</div>
+          <div class="role">Principal Investigator</div>
+        </div>
+        <div class="org-card">
+          <div class="name">Srinidhi Balasubramanian</div>
+          <div class="affil">IIT Bombay</div>
+          <div class="role">Local Organizer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <a href="https://earthsci.dev">earthsci.dev</a> &nbsp;|&nbsp;
+      <a href="mailto:ctessum@illinois.edu">ctessum@illinois.edu</a>
+    </div>
+    <p class="contact">For questions about registration, travel, or the program, please reach out by email.</p>
+  </footer>
+
+</body>
+</html>
