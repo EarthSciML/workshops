@@ -267,6 +267,54 @@
     .agenda-day.day1 .agenda-table { border-left: 3px solid var(--accent-blue); }
     .agenda-day.day2 .agenda-table { border-left: 3px solid var(--orange); }
 
+    /* Materials */
+    .materials-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+    .materials-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .materials-list li:last-child { border-bottom: none; }
+    .materials-list a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .materials-list a:hover { text-decoration: underline; }
+    .materials-list .session-num {
+      display: inline-block;
+      background: var(--light-blue);
+      color: var(--accent-blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      min-width: 2rem;
+      text-align: center;
+    }
+    .materials-list .session-num.day2 {
+      background: #fdf2e9;
+      color: var(--orange);
+    }
+    .pl-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: var(--accent-blue);
+      color: var(--white);
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .pl-link:hover { background: #2471a3; }
+
     /* Footer */
     footer {
       background: var(--deep-blue);
@@ -446,6 +494,49 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
+
+  <!-- Course Materials -->
+  <section>
+    <div class="container">
+      <h2>Course Materials</h2>
+      <p style="color: var(--medium); margin-bottom: 0.5rem;">
+        Access the interactive exercises on PrairieLearn or download the Pluto notebooks for each session.
+      </p>
+      <a href="https://pl.earthscilab.com/pl/course_instance/1/assessment_instance/2" class="pl-link" target="_blank">
+        Open PrairieLearn Course Page
+      </a>
+      <ul class="materials-list">
+        <li>
+          <span class="session-num">1</span>
+          <a href="assets/introduction_box_models.jl" download>Introduction to Box Models and ModelingToolkit</a>
+        </li>
+        <li>
+          <span class="session-num">2</span>
+          <a href="assets/heat_flux_urban_heat_island.jl" download>Sensible Heat Flux and Model Coupling</a>
+        </li>
+        <li>
+          <span class="session-num">3</span>
+          <a href="assets/boundary_layer_stability.jl" download>Boundary Layer Depth and Stability Index</a>
+        </li>
+        <li>
+          <span class="session-num">4</span>
+          <a href="assets/dispersion_box_height.jl" download>Dispersion Parameter and Box Height</a>
+        </li>
+        <li>
+          <span class="session-num">5</span>
+          <a href="assets/emissions_full_boxurb.jl" download>Emissions and the Full BOXURB Model</a>
+        </li>
+        <li>
+          <span class="session-num day2">6</span>
+          <a href="assets/mumbai_forecasting.jl" download>Urban Air Quality Forecasting with Real Data</a>
+        </li>
+        <li>
+          <span class="session-num day2">7</span>
+          <a href="assets/ude_neural_nets.jl" download>Scientific Machine Learning for Air Pollution Prediction</a>
+        </li>
+      </ul>
     </div>
   </section>
 
